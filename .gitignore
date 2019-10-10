@@ -31,7 +31,6 @@
 .*.out
 .*.app
 
-/*.swp
 /*
-/.*.cpp
-/.Makefile
+!/.*.cpp
+!/Makefile
