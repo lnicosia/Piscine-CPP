@@ -4,7 +4,7 @@
 # Compiled Object files
 *.slo
 *.lo
-*.o
+.*.o
 *.obj
 
 # Precompiled Headers
@@ -24,9 +24,11 @@
 *.lai
 *.la
 *.a
-*.lib
+.*.lib
 
 # Executables
-*.exe
-*.out
-*.app
+.*.exe
+.*.out
+.*.app
+
+.*.swp
