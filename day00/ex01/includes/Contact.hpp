@@ -6,11 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:52:11 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/11 10:42:15 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:34:33 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+# include <string>
 
 class	Contact{
 	public:
@@ -54,3 +56,5 @@ class	Contact{
 		std::string		_underwear_color;
 		std::string		_secret;
 };
+
+#endif
