@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:52:11 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/10 15:35:43 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/11 10:42:15 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class	Contact{
 		
 		std::string		getFirstName(void) const;
 		std::string		getLastName(void) const;
-		/*std::string		getNickname(void) const;
+		std::string		getNickname(void) const;
 		std::string		getLogin(void) const;
 		std::string		getAddress(void) const;
 		std::string		getMail(void) const;
@@ -27,10 +27,10 @@ class	Contact{
 		std::string		getBirthday(void) const;
 		std::string		getFavoriteMeal(void) const;
 		std::string		getUnderwearColor(void) const;
-		std::string		getSecret(void) const;*/
+		std::string		getSecret(void) const;
 		void			setFirstName(std::string s);
 		void			setLastName(std::string s);
-		/*void			setNickname(std::string s);
+		void			setNickname(std::string s);
 		void			setLogin(std::string s);
 		void			setAddress(std::string s);
 		void			setMail(std::string s);
@@ -38,7 +38,9 @@ class	Contact{
 		void			setBirthday(std::string s);
 		void			setFavoriteMeal(std::string s);
 		void			setUnderwearColor(std::string s);
-		void			setSecret(std::string s);*/
+		void			setSecret(std::string s);
+
+		void			getInfo(void) const;
 	private:
 		std::string		_first_name;
 		std::string		_last_name;
