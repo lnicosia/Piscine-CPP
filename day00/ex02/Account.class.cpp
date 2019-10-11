@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:58:22 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/11 15:30:49 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/11 15:40:57 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,7 @@ void	Account::displayStatus(void) const
 
 int		Account::checkAmount(void) const
 {
+	static int	count = 0;
+	count++;
 	return this->_amount;
 }
