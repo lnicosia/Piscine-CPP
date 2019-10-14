@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:21:48 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/14 12:21:52 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/14 12:23:58 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(void)
 	ZombieEvent	event;
 
 	std::cout << "Let's make a stack zombie:" << std::endl;
-	z = Zombie("Stack", "Jean-Classique");
+	z = Zombie("Stack", "Jean-Pile");
 	z.announce();
 	std::cout << "Now let's make a heap zombie:" << std::endl;
 	event.setZombieType("Heap");
