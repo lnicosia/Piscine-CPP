@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:23:19 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/11 13:36:05 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/14 10:09:39 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int		ask_command(Contact contacts[8], int *count)
 	std::string	buff;
 
 	std::cout << "What to do???" << std::endl;
-	std::cin >> buff;
+	std::getline(std::cin, buff);
+	if (!std::cin.good())
+		return 0;
 	if (!buff.compare("ADD"))
 	{
 		if (*count == 8)
