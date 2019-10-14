@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:27:19 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/11 17:40:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/14 12:20:39 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	ZombieEvent
 		~ZombieEvent(void);
 		void	setZombieType(std::string type);
 		Zombie*	newZombie(std::string name);
+		Zombie*	randomChump(void);
 };
 
 #endif
