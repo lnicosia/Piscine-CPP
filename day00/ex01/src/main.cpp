@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:23:19 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/14 10:09:39 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/14 11:19:20 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include <string>
 #include "Contact.hpp"
 
-void	print_contact_list(Contact contacts[8], int count)
+int	print_contact_list(Contact contacts[8], int count)
 {
 	int			i;
 	int			choice;
-	std::string	spaces = "          ";
+	std::string		buff;
+	std::string		spaces = "          ";
 
 	std::cout << "Contacts list:" << std::endl;
 	i = 0;
@@ -50,16 +51,30 @@ void	print_contact_list(Contact contacts[8], int count)
 		std::cout << std::endl;
 	}
 	std::cout << "Which contact's secret do you want to know?" << std::endl;
-	std::cin >> choice;
-	while (std::cin.fail() || choice < 1 || choice > count)
+	std::getline(std::cin, buff);
+	if (!std::cin.good())
+		return -1;
+	while (buff.length() != 1 || !isdigit(buff.at(0)))
 	{
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Please enter and integer between 1 and " << count << std::endl;
-		std::cin >> choice;
+		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
+	}
+	choice = std::stoi(buff);
+	while (choice < 1 || choice > count)
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Please enter and integer between 1 and " << count << std::endl;
+		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 	}
 	contacts[choice - 1].getInfo();
-	return ;
+	return 0;
 }
 
 int		ask_command(Contact contacts[8], int *count)
@@ -69,7 +84,7 @@ int		ask_command(Contact contacts[8], int *count)
 	std::cout << "What to do???" << std::endl;
 	std::getline(std::cin, buff);
 	if (!std::cin.good())
-		return 0;
+		return -1;
 	if (!buff.compare("ADD"))
 	{
 		if (*count == 8)
@@ -81,36 +96,58 @@ int		ask_command(Contact contacts[8], int *count)
 		std::cout << "First name?" << std::endl;
 		std::cin.ignore();
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setFirstName(buff);
 		std::cout << "Last name?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setLastName(buff);
 		std::cout << "Nickname?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setNickname(buff);
 		std::cout << "Login?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setLogin(buff);
 		std::cout << "Address?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setAddress(buff);
 		std::cout << "Mail?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setMail(buff);
 		std::cout << "Phone?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setPhone(buff);
 		std::cout << "Birthday?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setBirthday(buff);
 		std::cout << "Favorite meal?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setFavoriteMeal(buff);
 		std::cout << "Underwear color?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setUnderwearColor(buff);
 		std::cout << "Secret?" << std::endl;
 		std::getline(std::cin, buff);
+		if (!std::cin.good())
+			return -1;
 		contacts[*count].setSecret(buff);
 		(*count)++;
 	}
@@ -121,7 +158,8 @@ int		ask_command(Contact contacts[8], int *count)
 			std::cout << "Contact list is empty" << std::endl;
 			return 0;
 		}
-		print_contact_list(contacts, *count);
+		if (print_contact_list(contacts, *count))
+			return -1;
 	}
 	else if (!buff.compare("EXIT"))
 		return 1;

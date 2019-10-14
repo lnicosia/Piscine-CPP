@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 11:52:54 by lnicosia          #+#    #+#              #
-#    Updated: 2019/10/10 15:40:05 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/10/14 11:14:08 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS_RAW))
 
 CFLAGS = -Wall -Wextra -Werror \
 		 -I $(INCLUDES_DIR) \
-		 #-fsanitize=address -g3
+		 -fsanitize=address -g3
 
 RED = "\033[0;31m"
 GREEN = "\033[0;32m"
