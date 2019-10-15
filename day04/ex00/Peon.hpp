@@ -9,7 +9,7 @@ class Peon : public Victim
 		Peon(std::string name);
 		Peon(Peon const &instance);
 		Peon &operator=(Peon const &rhs);
-		~Peon(void);
+		virtual	~Peon(void);
         
         virtual void    getPolymorphed(void) const;
 	private:

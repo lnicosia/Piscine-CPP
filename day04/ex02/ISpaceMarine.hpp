@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
+/*   ISpaceMarine.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 15:49:39 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/15 18:01:22 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/10/15 17:26:20 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/10/15 17:26:22 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SUPERMUTANT_HPP
-# define SUPERMUTANT_HPP
+#ifndef ISPACEMARINE_HPP
+# define ISPACEMARINE_HPP
 
-#include <iostream>
-#include "Enemy.hpp"
-
-class SuperMutant : public Enemy
+class ISpaceMarine
 {
 	public:
-		SuperMutant(void);
-		SuperMutant(SuperMutant const &instance);
-		SuperMutant &operator=(SuperMutant const &rhs);
-		virtual	~SuperMutant(void);
+        virtual                 ~ISpaceMarine() {}
+        virtual ISpaceMarine*   clone() const = 0;
+        virtual void            battleCry() const = 0;
+        virtual void            rangedAttack() const = 0;
+        virtual void            meleeAttack() const = 0;
 
-        virtual void    takeDamage(int damage);
 	private:
 
 };

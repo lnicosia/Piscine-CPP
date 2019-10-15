@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:49:28 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/15 15:49:28 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/15 18:01:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class RadScorpion : public Enemy
 		RadScorpion(void);
 		RadScorpion(RadScorpion const &instance);
 		RadScorpion &operator=(RadScorpion const &rhs);
-		~RadScorpion(void);
+		virtual	~RadScorpion(void);
 
 	private:
 
