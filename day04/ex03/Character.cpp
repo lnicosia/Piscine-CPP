@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:39:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 16:28:03 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 17:17:45 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,19 @@ void	Character::use(int idx, ICharacter& target)
 std::string const & Character::getName() const
 {
     return this->_name;
+}
+
+AMateria*  Character::getMateria(int idx) const
+{
+    if (idx < 0 || idx > 3)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return 0;
+    }
+    if (!this->_materias[idx])
+    {
+        std::cout << "No materia at index " << idx << std::endl;
+        return 0;
+    }
+    return this->_materias[idx];
 }

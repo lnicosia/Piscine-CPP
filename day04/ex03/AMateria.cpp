@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:34:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 16:08:30 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 17:19:03 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void	AMateria::setXP(unsigned int xp)
 void	AMateria::use(ICharacter& target)
 {
 	(void)target;
+    std::cout << "10XP gained!" << std::endl;
 	this->_xp += 10;
 }
