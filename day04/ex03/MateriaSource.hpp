@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:10:17 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 12:17:20 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 13:35:59 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ class MateriaSource: public IMateriaSource
 
 	private:
         AMateria*       _materias[4];
+        size_t          _index;
+        void            _deleteMaterias();
+        void            _copyMaterias(MateriaSource const &instance);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:25:16 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 12:16:40 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:49:21 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
 
-int main()
+void    func()
 {
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
@@ -35,5 +35,11 @@ int main()
     delete bob;
     delete zaz;
     delete src;
+}
+
+int main()
+{
+    func();
+    while (1);
     return 0;
 }

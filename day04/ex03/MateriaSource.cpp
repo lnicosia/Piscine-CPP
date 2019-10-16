@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:16:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 12:19:58 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:50:06 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,83 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-MateriaSource::MateriaSource(void)
+MateriaSource::MateriaSource(void): _index(0)
 {
-	
+    size_t i = 0;
+    while (i < 4)
+    {
+        this->_materias[i] = 0;
+        i++;
+    }
+	std::cout << "Materia source created" << std::endl;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &instance)
 {
-	(void)instance;
+	this->_copyMaterias(instance);
+    std::cout << "Materia source created" << std::endl;
 }
 
 MateriaSource::~MateriaSource(void)
 {
-	
+    this->_deleteMaterias();
+	std::cout << "Materia source deleted" << std::endl;
 }
 
 MateriaSource &	MateriaSource::operator=(MateriaSource const &rhs)
 {
-	(void)rhs;
+    this->_deleteMaterias();
+    this->_copyMaterias(rhs);
     return *this;
 }
 
-void	MateriaSource::learnMateria(AMateria*)
+void    MateriaSource::_copyMaterias(MateriaSource const &instance)
 {
-	
+    size_t i = 0;
+    while (i < instance._index)
+    {
+        this->_materias[i] = instance._materias[i]->clone();
+        i++;
+    }
+}
+
+void    MateriaSource::_deleteMaterias()
+{
+    size_t i = 0;
+    while (i < this->_index)
+    {
+        delete this->_materias[i];
+        i++;
+    }
+    this->_index = 0;
+}
+
+void	MateriaSource::learnMateria(AMateria* m)
+{
+    if (!m)
+    {
+        std::cout << "Please equip an existing materia" << std::endl;
+        return ;
+    }
+    if (this->_index == 3)
+    {
+        std::cout << "Inventory is full" << std::endl;
+        return ;
+    }
+    std::cout << "Learning materia.." << std::endl;
+    this->_materias[this->_index] = m->clone();
+    std::cout << this->_materias[this->_index]->getType() << " learnt." << std::endl;
+    this->_index++;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
-    AMateria *m;
-    if (!type.compare("ice"))
-	    m = new Ice();
-    else if (!type.compare("cure"))
-        m = new Cure();
-    else
-        return 0;
-    return m;
+    size_t i = 0;
+    while (i < this->_index)
+    {
+        if (!type.compare(this->_materias[i]->getType()))
+            return this->_materias[i]->clone();
+        i++;
+    }
+    return 0;
 }

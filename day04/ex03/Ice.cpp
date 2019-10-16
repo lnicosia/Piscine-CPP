@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:03:42 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 11:59:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:03:32 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 Ice::Ice(void): AMateria("ice")
 {
-	
+	std::cout << "New ice" << std::endl;
 }
 
-Ice::Ice(Ice const &instance)
+Ice::Ice(Ice const &instance): AMateria("ice")
 {
-	(void)instance;
+    std::cout << "New ice" << std::endl;
+    *this = instance;
 }
 
 Ice::~Ice(void)
 {
-	
+	std::cout << "Ice materia destroyed.." << std::endl;
 }
 
 Ice*       Ice::clone() const

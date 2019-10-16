@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:34:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 11:56:05 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:05:25 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,29 @@
 
 AMateria::AMateria(std::string const & type): _type(type)
 {
-	
+	//std::cout << "New " << this->_type << " materia created!" << std::endl;     
 }
 
-AMateria::AMateria()
+AMateria::AMateria(): _type("default"), _xp(0)
 {
-    
+    //std::cout << "New " << this->_type << " materia created!" << std::endl;
 }
 
 AMateria::~AMateria()
 {
-	
+	//std::cout << this->_type << " destroyed.." << std::endl;
+}
+
+AMateria::AMateria(AMateria const &instance)
+{
+	*this = instance;
+}
+
+AMateria &	AMateria::operator=(AMateria const &rhs)
+{
+    this->_type = rhs._type;
+    this->_xp = rhs._xp;
+	return *this;
 }
 
 unsigned int        AMateria::getXP() const

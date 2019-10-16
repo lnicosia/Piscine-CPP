@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 09:59:56 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 11:58:23 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:43:02 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ class ICharacter;
 
 class AMateria
 {
-    protected:
-        std::string     _type;
     private:
+        std::string     _type;
         unsigned int    _xp;
     public:
         AMateria();
+        AMateria(AMateria const &instance);
         AMateria(std::string const & type);
+        AMateria &operator=(AMateria const &rhs);
         virtual ~AMateria();
         std::string     const & getType() const; //Returns the materia type
         unsigned int    getXP() const; //Returns the Materias XP

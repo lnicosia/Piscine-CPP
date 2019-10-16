@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:04:11 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 11:59:30 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:04:13 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 Cure::Cure(void): AMateria("cure")
 {
-	
+	std::cout << "New cure" << std::endl;
 }
 
-Cure::Cure(Cure const &instance)
+Cure::Cure(Cure const &instance): AMateria("cure")
 {
-	(void)instance;
+    std::cout << "New cure" << std::endl;
+    *this = instance;
 }
 
 Cure::~Cure(void)
 {
-	
+	std::cout << "Cure materia destroyed.." << std::endl;
 }
 
 Cure*       Cure::clone() const
