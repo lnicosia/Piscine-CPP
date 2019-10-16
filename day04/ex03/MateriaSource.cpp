@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:16:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 14:50:06 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:36:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ MateriaSource::MateriaSource(void): _index(0)
 	std::cout << "Materia source created" << std::endl;
 }
 
-MateriaSource::MateriaSource(MateriaSource const &instance)
+MateriaSource::MateriaSource(MateriaSource const &instance): _index(instance._index)
 {
 	this->_copyMaterias(instance);
     std::cout << "Materia source created" << std::endl;
@@ -40,6 +40,7 @@ MateriaSource::~MateriaSource(void)
 MateriaSource &	MateriaSource::operator=(MateriaSource const &rhs)
 {
     this->_deleteMaterias();
+    this->_index = rhs._index;
     this->_copyMaterias(rhs);
     return *this;
 }
@@ -47,9 +48,10 @@ MateriaSource &	MateriaSource::operator=(MateriaSource const &rhs)
 void    MateriaSource::_copyMaterias(MateriaSource const &instance)
 {
     size_t i = 0;
-    while (i < instance._index)
+    while (i < 4)
     {
-        this->_materias[i] = instance._materias[i]->clone();
+        if (instance._materias[i])
+            this->_materias[i] = instance._materias[i]->clone();
         i++;
     }
 }
@@ -57,9 +59,10 @@ void    MateriaSource::_copyMaterias(MateriaSource const &instance)
 void    MateriaSource::_deleteMaterias()
 {
     size_t i = 0;
-    while (i < this->_index)
+    while (i < 4)
     {
-        delete this->_materias[i];
+        if (this->_materias[i])
+            delete this->_materias[i];
         i++;
     }
     this->_index = 0;
@@ -86,7 +89,7 @@ void	MateriaSource::learnMateria(AMateria* m)
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
     size_t i = 0;
-    while (i < this->_index)
+    while (i <= this->_index)
     {
         if (!type.compare(this->_materias[i]->getType()))
             return this->_materias[i]->clone();

@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:39:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 15:14:48 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:28:03 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,9 @@ Character::Character(void): _name("Noname"), _index(0)
     std::cout << "New unnamed character" << std::endl;
 }
 
-Character::Character(Character const &instance)
+Character::Character(Character const &instance): _name(instance._name), _index(instance._index)
 {
-    this->_deleteMaterias();
-    size_t i = 0;
-    while (i < instance._index)
-    {
-        this->_materias[i] = instance._materias[i]->clone();
-        i++;
-    }
-    this->_name = instance._name;
+    this->_copyMaterias(instance);
 }
 
 Character::~Character(void)
@@ -55,16 +48,32 @@ Character::Character(std::string name): _name(name), _index(0)
 Character &	Character::operator=(Character const &rhs)
 {
     this->_deleteMaterias();
+    this->_copyMaterias(rhs);
 	this->_name = rhs._name;
+    this->_index = rhs._index;
     return *this;
 }
 
 void    Character::_deleteMaterias()
 {
     size_t  i = 0;
-    while (i < this->_index)
+    while (i < 4)
     {
-        delete this->_materias[i];
+        if (this->_materias[i])
+            delete this->_materias[i];
+        i++;
+    }
+}
+
+void    Character::_copyMaterias(Character const &instance)
+{
+    size_t i = 0;
+    while (i < 4)
+    {
+        if (instance._materias[i])
+            this->_materias[i] = instance._materias[i]->clone();
+        else
+            this->_materias[i] = 0;
         i++;
     }
 }
@@ -94,8 +103,17 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-    if (idx < 4 && this->_materias[idx])
-        this->_materias[idx]->use(target);
+    if (idx < 0 || idx >= 4)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return ;
+    }
+    if (!this->_materias[idx])
+    {
+        std::cout << "No materia at this index" << std::endl;
+        return ;
+    }
+    this->_materias[idx]->use(target);
 }
 
 std::string const & Character::getName() const

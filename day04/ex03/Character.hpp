@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:35:08 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 15:13:13 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:53:57 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Character : public ICharacter
         std::string     _name;
         size_t          _index;
         void            _deleteMaterias();
+        void            _copyMaterias(Character const &instance);
 };
 
 #endif

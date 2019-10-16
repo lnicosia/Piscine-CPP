@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:34:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 15:05:25 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:08:30 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AMateria::AMateria(std::string const & type): _type(type)
 {
-	//std::cout << "New " << this->_type << " materia created!" << std::endl;     
+	//std::cout << "New " << this->_type << " materia created!" << std::endl;
 }
 
 AMateria::AMateria(): _type("default"), _xp(0)

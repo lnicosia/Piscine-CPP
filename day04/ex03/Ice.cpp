@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:03:42 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 15:03:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:29:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Ice::Ice(void): AMateria("ice")
 {
-	std::cout << "New ice" << std::endl;
+	std::cout << "New ice: " << this << std::endl;
 }
 
 Ice::Ice(Ice const &instance): AMateria("ice")
 {
-    std::cout << "New ice" << std::endl;
+    std::cout << "New ice: " << this <<std::endl;
     *this = instance;
 }
 
