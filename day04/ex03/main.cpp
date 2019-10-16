@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 10:25:16 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 14:49:21 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:37:42 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@
 void    func()
 {
     IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
+    AMateria *amat = new Ice();
+    src->learnMateria(amat);
+    delete amat;
+    amat = new Cure();
+    src->learnMateria(amat);
+    delete amat;
     ICharacter* zaz = new Character("zaz");
     AMateria* tmp;
     tmp = src->createMateria("ice");
