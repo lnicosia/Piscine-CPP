@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:19:23 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/16 19:41:11 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 09:59:59 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,30 @@ class Bureaucrat
         void                setGrade(int grade);
         void                incrGrade();
         void                decrGrade();
+        
+        class GradeTooHighException : public std::exception
+    {
+        public:
+            GradeTooHighException();
+            GradeTooHighException(GradeTooHighException const &instance);
+            GradeTooHighException &operator=(GradeTooHighException const &rhs);
+            virtual ~GradeTooHighException() throw();
+            virtual const char* what() const throw();
+    };
+    class GradeTooLowException : public std::exception
+    {
+        public:
+            GradeTooLowException();
+            GradeTooLowException(GradeTooLowException const &instance);
+            GradeTooLowException &operator=(GradeTooLowException const &rhs);
+            virtual ~GradeTooLowException() throw();
+            virtual const char* what() const throw();
+    };
 
 	private:
         std::string const   _name;
         int                 _grade;
         
-    class GradeTooHighException : public std::exception
-    {
-        public:
-            virtual const char* what() const throw()
-            {
-                return "Grade is too high";
-            }
-    };
-    class GradeTooLowException : public std::exception
-    {
-        public:
-            virtual const char* what() const throw()
-            {
-                return "Grade is too low";
-            }
-    };
 };
 
 std::ostream&	operator<<(std::ostream &o, Bureaucrat const &instance);
