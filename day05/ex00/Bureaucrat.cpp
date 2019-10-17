@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:21:11 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/17 10:10:50 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 11:06:53 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ Bureaucrat::~Bureaucrat(void)
 	
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)
         throw GradeTooLowException();
-    else
-        this->_grade = grade;
+
 }
 
 Bureaucrat &	Bureaucrat::operator=(Bureaucrat const &rhs)
