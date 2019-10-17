@@ -47,6 +47,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     std::string     fileName = this->getTarget() + "_shrubbery";
     std::ofstream   file;
     file.open(fileName);
-    file << "ASCII TREE";
+    file << "ASCII TREE" << std::endl;
     file.close();
 }

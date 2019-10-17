@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:22:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/17 12:47:27 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 13:34:21 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@
 int     main()
 {
     Bureaucrat  bob("Bob", 147);
-    Bureaucrat  john("John", 120);
-    Form        *f1 = new PresidentialPardonForm();
-    Form        *f2 = new RobotomyRequestForm();
-    Form        *f3 = new ShrubberyCreationForm();
+    Bureaucrat  john("John", 60);
+    Bureaucrat  manu("Manu", 1);
+    Form        *f1 = new PresidentialPardonForm("mechant pabo");
+    Form        *f2 = new RobotomyRequestForm("meurtier sanglant");
+    Form        *f3 = new ShrubberyCreationForm("home");
+
+    std::cout << *f1 << std::endl;
+    std::cout << *f2 << std::endl;
+    std::cout << *f3 << std::endl;
     try
     {
         bob.executeForm(*f1);
@@ -46,9 +51,16 @@ int     main()
     {
         std::cerr << e.what() << std::endl;
     }
+    std::cout << std::endl;
+    manu.signForm(f1);
+    manu.signForm(f2);
+    manu.signForm(f3);
+    std::cout << std::endl << *f1 << std::endl;
+    std::cout << *f2 << std::endl;
+    std::cout << *f3 << std::endl;
     try
     {
-        bob.signForm(f1);
+        john.executeForm(*f1);
     }
     catch(const std::exception& e)
     {
@@ -56,7 +68,7 @@ int     main()
     }
     try
     {
-        bob.signForm(f2);
+        john.executeForm(*f2);
     }
     catch(const std::exception& e)
     {
@@ -64,7 +76,32 @@ int     main()
     }
     try
     {
-        bob.signForm(f3);
+        john.executeForm(*f3);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+    try
+    {
+        manu.executeForm(*f1);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    try
+    {
+        manu.executeForm(*f2);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    try
+    {
+        manu.executeForm(*f3);
     }
     catch(const std::exception& e)
     {
