@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:51:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/17 15:42:43 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 19:34:18 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ Form*	Intern::makeShrubberyForm(std::string target)
 
 Form* (Intern::*Intern::_newForm[3])(std::string target) =
 {
-    &Intern::makePardonForm,
     &Intern::makeRobotomyForm,
     &Intern::makeShrubberyForm,
+    &Intern::makePardonForm,
+
 };
 
 std::string Intern::_forms[3] = {

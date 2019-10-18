@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 10:26:21 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/17 12:45:54 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 19:23:11 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool                Form::getSigned() const
 void                Form::beSigned(Bureaucrat& b)
 {
     if (b.getGrade() > this->_minSignGrade)
-        throw GradeTooLowException("Bureaucrate grade is too low to sign.");
+        throw GradeTooLowException("Bureaucrat grade is too low to sign.");
     std::cout << b.getName() << " signed \"" << this->_name << "\"" << std::endl;
     this->_signed = true;
 }

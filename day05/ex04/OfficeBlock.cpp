@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:11:51 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/17 16:11:47 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/17 19:34:49 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,11 @@ void	OfficeBlock::setExecuter(Bureaucrat* executer)
 
 void	OfficeBlock::doBureaucracy(std::string name, std::string target )
 {
-    try
-    {
-        if (!this->_intern || !this->_executer || !this->_signer)
-            throw NullPointerException();
-        Form *f = this->_intern->makeForm(name, target);
-        this->_signer->signForm(f);
-        this->_executer->executeForm(*f);
-    }
-    catch(NullPointerException &e)
-    {
-        throw e;
-    }
-    catch(Intern::UnknownFormException &e)
-    {
-        throw e;
-    }
-    catch(Form::GradeTooLowException &e)
-    {
-        throw e;
-    }
-    catch(const std::exception &e)
-    {
-        throw e;
-    }
-    
+    if (!this->_intern || !this->_executer || !this->_signer)
+        throw NullPointerException();
+    Form *f = this->_intern->makeForm(name, target);
+    this->_signer->signForm(f);
+    this->_executer->executeForm(*f);
 }
 
 /********* Exceptions part **********/
