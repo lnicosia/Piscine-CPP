@@ -32,3 +32,5 @@ obj/
 .*.out
 .*.app
 .*.swp
+
+.vscode
