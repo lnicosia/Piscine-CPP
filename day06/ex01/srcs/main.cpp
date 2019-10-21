@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/21 17:57:32 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/10/21 18:44:51 by lnicosia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <iostream>
+
+struct Data
+{
+    std::string s1;
+    int n;
+    std::string s2;
+};
+
+void *  serialize(void)
+{
+    srand(static_cast<unsigned int>(time(NULL)));
+    char    s1[8];
+    int     nb = rand();
+    char    s2[8];
+    size_t  i = 0;
+    while (i < 8)
+    {
+        s1[i] = rand() % 10 + 48;
+        s2[i] = rand() % 10 + 48;
+        i++;
+    }
+    std::cout << "s1 = \"";
+    i = 0;
+    while (i < 8)
+    {
+        std::cout << s1[i];
+        i++;
+    }
+    std::cout << "\"" << std::endl;
+    std::cout << "int = " << nb << std::endl;
+    std::cout << "s2 = \"";
+    i = 0;
+    while (i < 8)
+    {
+        std::cout << s2[i];
+        i++;
+    }
+    std::cout << "\"" << std::endl;
+    uint8_t *res = new uint8_t[20];
+    i = 0;
+    while (i < 8)
+    {
+        if (i < 4)
+            res[i + 8] = reinterpret_cast<uint8_t *>(&nb)[i];
+        res[i] = reinterpret_cast<uint8_t *>(s1)[i];
+        res[i + 12] = reinterpret_cast<uint8_t *>(s2)[i];
+        i++;
+    }
+    return reinterpret_cast<void *>(res);
+}
+
+int main()
+{
+    std::cout << "/*** SERIALIZING ***/" << std::endl << std::endl;
+    void *  bytes = serialize();
+
+    std::cout << std::endl << "/*** DESERIALIZING ***/" << std::endl << std::endl;
+    struct Data res;
+    char *strGetter = reinterpret_cast<char *>(bytes);
+    int *   intGetter = reinterpret_cast<int *>(strGetter + 8);
+    res.s1 = std::string(strGetter, 8);
+    res.n = *(intGetter);
+    res.s2 = std::string(strGetter + 12, 8);
+    std::cout << "s1 = \"" << res.s1 << "\"" << std::endl;
+    std::cout << "int = " << res.n << std::endl;
+    std::cout << "s1 = \"" << res.s2 << "\"" << std::endl;
+    return 0;
+}
