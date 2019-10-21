@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:57:32 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/21 18:49:03 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:57:11 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,28 @@ void *  serialize(void)
         i++;
     }
     std::cout << "\"" << std::endl;
-    uint8_t *res = new uint8_t[20];
+    char *res = new char[20];
     i = 0;
     while (i < 8)
     {
         if (i < 4)
-            res[i + 8] = reinterpret_cast<uint8_t *>(&nb)[i];
-        res[i] = reinterpret_cast<uint8_t *>(s1)[i];
-        res[i + 12] = reinterpret_cast<uint8_t *>(s2)[i];
+            res[i + 8] = reinterpret_cast<char *>(&nb)[i];
+        res[i] = reinterpret_cast<char *>(s1)[i];
+        res[i + 12] = reinterpret_cast<char *>(s2)[i];
         i++;
     }
     return reinterpret_cast<void *>(res);
+}
+
+Data * deserialize( void * raw )
+{
+    struct Data *res = new Data;
+    char *strGetter = reinterpret_cast<char *>(raw);
+    int *   intGetter = reinterpret_cast<int *>(strGetter + 8);
+    res->s1 = std::string(static_cast<const char *>(strGetter), 8);
+    res->n = *(intGetter);
+    res->s2 = std::string(static_cast<const char *>(strGetter) + 12, 8);
+    return res;
 }
 
 int main()
@@ -68,14 +79,9 @@ int main()
     void *  bytes = serialize();
 
     std::cout << std::endl << "/*** DESERIALIZING ***/" << std::endl << std::endl;
-    struct Data res;
-    char *strGetter = reinterpret_cast<char *>(bytes);
-    int *   intGetter = reinterpret_cast<int *>(strGetter + 8);
-    res.s1 = std::string(static_cast<const char *>(strGetter), 8);
-    res.n = *(intGetter);
-    res.s2 = std::string(static_cast<const char *>(strGetter) + 12, 8);
-    std::cout << "s1 = \"" << res.s1 << "\"" << std::endl;
-    std::cout << "int = " << res.n << std::endl;
-    std::cout << "s1 = \"" << res.s2 << "\"" << std::endl;
+    Data *res = deserialize(bytes);
+    std::cout << "s1 = \"" << res->s1 << "\"" << std::endl;
+    std::cout << "int = " << res->n << std::endl;
+    std::cout << "s1 = \"" << res->s2 << "\"" << std::endl;
     return 0;
 }
