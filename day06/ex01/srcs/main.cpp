@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:57:32 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/21 18:44:51 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:49:03 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int main()
     struct Data res;
     char *strGetter = reinterpret_cast<char *>(bytes);
     int *   intGetter = reinterpret_cast<int *>(strGetter + 8);
-    res.s1 = std::string(strGetter, 8);
+    res.s1 = std::string(static_cast<const char *>(strGetter), 8);
     res.n = *(intGetter);
-    res.s2 = std::string(strGetter + 12, 8);
+    res.s2 = std::string(static_cast<const char *>(strGetter) + 12, 8);
     std::cout << "s1 = \"" << res.s1 << "\"" << std::endl;
     std::cout << "int = " << res.n << std::endl;
     std::cout << "s1 = \"" << res.s2 << "\"" << std::endl;
