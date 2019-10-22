@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:57:07 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/22 20:44:58 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/22 21:10:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,21 @@ MutantStack<T>::MutantStack(): std::stack<T>()
 }
 
 template < typename T >
+MutantStack<T>::MutantStack(MutantStack const & instance): std::stack<T>(instance)
+{
+    
+}
+
+template < typename T >
 MutantStack<T>::~MutantStack()
 {
     
+}
+
+template < typename T >
+MutantStack<T> &   MutantStack<T>::operator=(MutantStack const & rhs)
+{
+    return rhs;
 }
 
 /******* ITERATOR PART *******/

@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:15:55 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/22 20:42:56 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/22 21:10:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,29 @@ template < typename T>
 class MutantStack : public std::stack<T>
 {
     public:
-        MutantStack<T>();
-        ~MutantStack<T>();
+        MutantStack();
+        virtual ~MutantStack();
+        MutantStack(MutantStack const & intstance);
+        MutantStack & operator=(MutantStack const & rhs);
 
         class iterator
         {
             public:
                 iterator();
                 ~iterator();
+                iterator(iterator const & instance);
+                iterator & operator=(iterator const & rhs);
                 iterator & operator++(void);
                 iterator & operator--(void);
-                bool     operator!=(MutantStack<T>::iterator const & rhs) const;
+                bool     operator!=(iterator const & rhs) const;
                 MutantStack<T> & operator*(void);
             private:
         };
         
-        MutantStack<T>::iterator    begin();
-        MutantStack<T>::iterator    end();
-        MutantStack<T>::iterator    begin() const ;
-        MutantStack<T>::iterator    end() const;
+        iterator    begin();
+        iterator    end();
+        iterator    begin() const ;
+        iterator    end() const;
         
     private:
 };
