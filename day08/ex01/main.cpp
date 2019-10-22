@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:50:10 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/22 18:52:29 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/22 19:14:53 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <array>
 
-# define SIZE 1000
+# define SIZE 10000
 
 int     main()
 {
