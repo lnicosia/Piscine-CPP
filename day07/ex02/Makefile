@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/11 23:08:04 by ldedier           #+#    #+#              #
-#    Updated: 2019/10/21 21:43:39 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/10/22 13:56:30 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,24 +24,26 @@ SRCDIR			=	srcs/
 OBJ_DIR			=	objs/
 BINDIR			=	./
 INCLUDESDIR		=	includes/
+TEMPLATESDIR	=	srcs/
 
-INCLUDES		=	Array.hpp \
+INCLUDES		=	A.hpp \
+
+TEMPLATES		=	Array.hpp
 
 SRCS			=	main.cpp \
-					Array.cpp \
-
+					A.cpp \
 
 VPATH			=	$(INCLUDESDIR) \
 					$(SRCDIR)
 
-OBJECTS			=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
+OBJECTS			=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o)) \
+					$(addprefix $(OBJ_DIR), $(TEMPLATES:.hpp=.o)) \
 
 CFLAGS			= -I $(INCLUDESDIR) -Wall -Wextra -Werror -std=c++98 -Wconversion
 
 OK_COLOR	=	\x1b[32;01m
 EOC			=	\033[0m
 
-LFLAGS = -lncurses
 
 ifeq ($(DEBUG), 1)
 	CFLAGS += -fsanitize=address
@@ -56,13 +58,16 @@ debug:
 	@$(MAKE) all DEBUG=1
 
 $(BINDIR)$(NAME): $(OBJ_DIR) $(OBJECTS)
-	$(CC) -o $@ $(OBJECTS) $(CFLAGS) $(LFLAGS)
+	$(CC) -o $@ $(OBJECTS) $(CFLAGS)
 	@$(ECHO) "$(OK_COLOR)$(NAME) linked with success !$(EOC)"
 
 $(OBJ_DIR):
 	@$(MKDIR) $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INCLUDES)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.hpp $(INCLUDES)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
