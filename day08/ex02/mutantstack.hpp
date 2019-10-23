@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:15:55 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/22 21:10:44 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/23 11:15:52 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class MutantStack : public std::stack<T>
         MutantStack(MutantStack const & intstance);
         MutantStack & operator=(MutantStack const & rhs);
 
-        class iterator
+        /*class iterator
         {
             public:
                 iterator();
@@ -42,7 +42,14 @@ class MutantStack : public std::stack<T>
         iterator    begin();
         iterator    end();
         iterator    begin() const ;
-        iterator    end() const;
+        iterator    end() const;*/
+
+        typedef typename    std::stack<T>::container_type::iterator iterator;
+
+        //iterator    begin();
+        //iterator    end();
+        iterator    begin();
+        iterator    end();
         
     private:
 };

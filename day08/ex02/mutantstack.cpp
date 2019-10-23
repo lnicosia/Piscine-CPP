@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:57:07 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/22 21:10:07 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/23 11:15:55 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,23 @@ MutantStack<T> &   MutantStack<T>::operator=(MutantStack const & rhs)
 
 /******* ITERATOR PART *******/
 
-template < typename T>
+/******* Iterator = container *******/
+
+template < typename T >
+typename MutantStack<T>::iterator   MutantStack<T>::begin()
+{
+    return std::begin(std::stack<T>::c);
+}
+
+template < typename T >
+typename MutantStack<T>::iterator   MutantStack<T>::end()
+{
+    return std::end(std::stack<T>::c);
+}
+
+/******* Iterator = class *******/
+
+/*template < typename T>
 MutantStack<T>::iterator::iterator()
 {
     
@@ -105,4 +121,5 @@ std::ostream & operator<<(std::ostream & o, MutantStack<T> const & instance)
 {
     (void)instance;
     return o;
-}
+}*/
+
