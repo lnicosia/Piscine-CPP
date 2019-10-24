@@ -6,18 +6,18 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:35:09 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:35:33 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:41:23 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MulToken.hpp"
 
-MulToken::MulToken(void)
+MulToken::MulToken(void): OpToken("*", 1, 3)
 {
 	
 }
 
-MulToken::MulToken(MulToken const &instance): OpToken(instance.getChar())
+MulToken::MulToken(MulToken const &instance): OpToken(instance.getContent(), 1, instance.getPrecedence())
 {
 	
 }
@@ -38,7 +38,7 @@ MulToken &	MulToken::operator=(MulToken const &rhs)
     return *this;
 }
 
-void	MulToken::op(NumToken const & rhs)
+int		MulToken::op(int const & ghs, int const & rhs) const
 {
-	(void)rhs;
+	return ghs * rhs;
 }

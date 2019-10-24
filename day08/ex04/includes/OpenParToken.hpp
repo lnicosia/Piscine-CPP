@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MulToken.hpp                                       :+:      :+:    :+:   */
+/*   OpenParToken.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 11:57:35 by lnicosia          #+#    #+#             */
+/*   Created: 2019/10/24 14:13:11 by lnicosia          #+#    #+#             */
 /*   Updated: 2019/10/24 16:39:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MULTOKEN_HPP
-# define MULTOKEN_HPP
+#ifndef OPENPARTOKEN_HPP
+# define OPENPARTOKEN_HPP
 
 #include "OpToken.hpp"
 
-class MulToken: public OpToken
+class OpenParToken: public OpToken
 {
 	public:
-		MulToken(void);
-		//MulToken(** replace parameters **);
-		MulToken(MulToken const &instance);
-		MulToken &operator=(MulToken const &rhs);
-		virtual ~MulToken(void);
+		OpenParToken(void);
+		//OpenParToken(** replace parameters **);
+		OpenParToken(OpenParToken const &instance);
+		OpenParToken &operator=(OpenParToken const &rhs);
+		virtual ~OpenParToken(void);
+        virtual void    print(void) const;
         virtual int     op(int const &, int const &) const;
 
 	private:

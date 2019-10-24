@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:55:54 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:33:38 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:39:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class AddToken: public OpToken
 		AddToken(AddToken const &instance);
 		AddToken &operator=(AddToken const &rhs);
 		virtual ~AddToken(void);
-        virtual void    op(NumToken const & rhs);
+        virtual int     op(int const &, int const &) const;
 
 	private:
 

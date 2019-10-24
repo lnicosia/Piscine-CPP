@@ -6,18 +6,18 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:31:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:33:42 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:41:09 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AddToken.hpp"
 
-AddToken::AddToken(void)
+AddToken::AddToken(void): OpToken("+", 1, 2)
 {
 	
 }
 
-AddToken::AddToken(AddToken const &instance): OpToken(instance.getChar())
+AddToken::AddToken(AddToken const &instance): OpToken(instance.getContent(), 1, instance.getPrecedence())
 {
 	
 }
@@ -38,7 +38,7 @@ AddToken &	AddToken::operator=(AddToken const &rhs)
     return *this;
 }
 
-void	AddToken::op(NumToken const & rhs)
+int		AddToken::op(int const & ghs, int const & rhs) const
 {
-	(void)rhs;
+	return ghs + rhs;
 }

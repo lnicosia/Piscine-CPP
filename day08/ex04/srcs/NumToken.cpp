@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:17:34 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:30:18 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:39:02 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ NumToken::NumToken(void): AToken(), _value(0)
 	
 }
 
-NumToken::NumToken(int value): _value(value)
+NumToken::NumToken(std::string s, int value): AToken(s, 0), _value(value)
 {
 	
 }
 
-NumToken::NumToken(NumToken const &instance): AToken(instance.getChar()), _value(instance.getValue())
+NumToken::NumToken(NumToken const &instance): AToken(instance.getContent(), 0), _value(instance.getValue())
 {
     
 }

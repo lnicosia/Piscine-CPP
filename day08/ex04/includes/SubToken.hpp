@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:56:42 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:33:58 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:39:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class SubToken: public OpToken
 		SubToken(SubToken const &instance);
 		SubToken &operator=(SubToken const &rhs);
 		virtual ~SubToken(void);
-        virtual void    op(NumToken const & rhs);
+        virtual int     op(int const &, int const &) const;
 
 	private:
 

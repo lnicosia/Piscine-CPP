@@ -6,18 +6,18 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:12:24 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:24:52 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:40:37 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AToken.hpp"
 
-AToken::AToken(void): _c(' ')
+AToken::AToken(void): _content(""), _type(0)
 {
 	
 }
 
-AToken::AToken(char c): _c(c)
+AToken::AToken(std::string s, size_t type): _content(s), _type(type)
 {
 	
 }
@@ -34,11 +34,16 @@ AToken::~AToken(void)
 
 AToken &	AToken::operator=(AToken const &rhs)
 {
-	_c = rhs._c;
+	_content = rhs._content;
     return *this;
 }
 
-char	AToken::getChar(void) const
+std::string AToken::getContent(void) const
 {
-	return (this->_c);
+	return (this->_content);
+}
+
+size_t		AToken::getType(void) const
+{
+	return this->_type;
 }

@@ -6,13 +6,13 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:35:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:36:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:41:17 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DivToken.hpp"
 
-DivToken::DivToken(void)
+DivToken::DivToken(void): OpToken("/", 1, 3)
 {
 	
 }
@@ -22,7 +22,7 @@ DivToken::DivToken(void)
 	
 }*/
 
-DivToken::DivToken(DivToken const &instance): OpToken(instance.getChar())
+DivToken::DivToken(DivToken const &instance): OpToken(instance.getContent(), 1, instance.getPrecedence())
 {
 	
 }
@@ -38,7 +38,7 @@ DivToken &	DivToken::operator=(DivToken const &rhs)
     return *this;
 }
 
-void	DivToken::op(NumToken const & rhs)
+int		DivToken::op(int const & ghs, int const & rhs) const
 {
-	(void)rhs;
+	return ghs / rhs;
 }

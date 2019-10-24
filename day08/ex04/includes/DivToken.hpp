@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:58:04 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:36:08 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:39:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class DivToken: public OpToken
 		DivToken(DivToken const &instance);
 		DivToken &operator=(DivToken const &rhs);
 		virtual ~DivToken(void);
-        virtual void    op(NumToken const & rhs);
+        virtual int     op(int const &, int const &) const;
         
 	private:
 

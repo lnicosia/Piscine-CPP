@@ -6,18 +6,18 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:34:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:34:57 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:41:30 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SubToken.hpp"
 
-SubToken::SubToken(void)
+SubToken::SubToken(void): OpToken("-", 1, 2)
 {
 	
 }
 
-SubToken::SubToken(SubToken const &instance): OpToken(instance.getChar())
+SubToken::SubToken(SubToken const &instance): OpToken(instance.getContent(), 1, instance.getPrecedence())
 {
 	
 }
@@ -38,7 +38,7 @@ SubToken &	SubToken::operator=(SubToken const &rhs)
     return *this;
 }
 
-void	SubToken::op(NumToken const & rhs)
+int		SubToken::op(int const & ghs, int const & rhs) const
 {
-	(void)rhs;
+	return ghs - rhs;
 }

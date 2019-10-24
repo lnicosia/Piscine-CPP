@@ -6,26 +6,30 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:49:26 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/24 12:24:26 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:40:39 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ATOKEN_HPP
 # define ATOKEN_HPP
 
+#include <string>
+
 class AToken
 {
 	public:
 		AToken(void);
-		AToken(char c);
+		AToken(std::string, size_t type);
 		AToken(AToken const &instance);
 		AToken &operator=(AToken const &rhs);
 		virtual ~AToken(void);
         virtual void    print(void) const = 0;
-        char            getChar(void) const;
+        std::string     getContent(void) const;
+        size_t          getType(void) const;
 
 	private:
-        char    _c;
+        std::string     _content;
+        size_t          _type;
 
 };
 
