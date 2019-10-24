@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:35:16 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/23 21:22:46 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 10:08:55 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ BackTo & BackTo::operator=(BackTo const &rhs)
 
 void    BackTo::execute(char *bytes, size_t & bytesIndex)
 {
+    std::cout << "]";
     if (!bytes[bytesIndex])
         return ;
 }

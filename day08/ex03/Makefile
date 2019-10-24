@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/11 23:08:04 by ldedier           #+#    #+#              #
-#    Updated: 2019/10/23 14:52:55 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/10/24 11:39:10 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ VPATH			=	$(INCLUDESDIR) \
 
 OBJECTS			=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o)) \
 
-CFLAGS			= -I $(INCLUDESDIR) -Wall -Wextra -Werror -std=c++98 -Wconversion
+CFLAGS			= -I $(INCLUDESDIR) -Wall -Wextra -Werror -std=c++98 -Wconversion -Ofast -flto
 
 OK_COLOR	=	\x1b[32;01m
 EOC			=	\033[0m

@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 12:24:22 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/10/23 21:48:33 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/10/24 11:03:06 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ bool    Mindopen::readFile(char *file)
 void    Mindopen::fillQueue(std::queue<IInstruction*> & queue, std::stringstream &s)
 {
     char    c;
+    //std::cout << std::endl;
     while (s.get(c))
     {
+        //std::cout << c;
         std::queue<IInstruction*>   queue2;
         switch (c)
         {
@@ -103,8 +105,10 @@ void    Mindopen::fillQueue(std::queue<IInstruction*> & queue, std::stringstream
                 queue.push(new ByteIn());
                 break;
             case '[':
+                //std::cout << std::endl << "Sous token";
                 fillQueue(queue2, s);
                 queue.push(new JumpTo(queue2, s));
+                //std::cout << std::endl;
                 break;
             case ']':
                 return ;
@@ -119,10 +123,11 @@ void	Mindopen::execute()
     //std::cout << "Executing.." << std::endl;
 	while (!_queue.empty())
     {
-        //std::cout << "executing " << std::endl;
+        //std::cout << "executing ";
         _queue.front()->execute(_bytes, _bytesIndex);
         //std::cout << "index = " << _bytesIndex << std::endl;
         _queue.pop();
+        //std::cout << std::endl;
     }
     //std::cout << "Execute done." << std::endl;
 }
